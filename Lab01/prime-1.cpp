@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-bool checkPrime(long pages){
+bool checkPrime(long long pages){
 
     if (pages == 2){
         return true;
@@ -11,7 +11,7 @@ bool checkPrime(long pages){
         return false;
     } // skip even number
     
-    for (long i = 3; i * i <= pages; i + 2){
+    for (long i = 3; i * i <= pages; i += 2){
         if(pages % i == 0){
             return false;
         }
@@ -22,12 +22,13 @@ bool checkPrime(long pages){
 
 }
 
-void possitionCount(long pages) {
+void possitionCount(long long pages) {
     
     int possition_count = 0;
 
     if (pages < 2) {
         cout << "ERROR!";
+        return;
     } // sorry I forgot to read question below that if it lower than 2 it will be error
 
     if (!checkPrime(pages)) {
@@ -60,9 +61,9 @@ void possitionCount(long pages) {
 
 int main (){
 
-    long pages;
+    long long pages;
 
-    scanf("%ld", &pages);
+    scanf("%lld", &pages);
     
     possitionCount(pages);
 
