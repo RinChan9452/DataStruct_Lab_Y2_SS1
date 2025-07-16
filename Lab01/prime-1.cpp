@@ -3,10 +3,6 @@
 using namespace std;
 
 bool checkPrime(long long pages){
-
-    if (pages < 2) {
-        return false;
-    } //checked if it lower than 2 or not if true return false because 2 is the first prime
     
     for (long long i = 2; i * i <= pages; i++){
         if(pages % i == 0){
@@ -23,6 +19,10 @@ void possitionCount(long long pages) {
     
     int possition_count = 0;
 
+    if (pages < 2) {
+        cout << "ERROR!";
+    } // sorry I forgot to read question below that if it lower than 2 it will be error
+
     if (!checkPrime(pages)) {
         cout << "Unrelated";
         return;
@@ -35,7 +35,9 @@ void possitionCount(long long pages) {
     } // check possition by loop number and check each number if it prime or not if yes possition count 
       // + 1 till the prime number that I want to find the possition
 
-    if (possition_count % 100 >= 11 && possition_count % 100 <= 13) {
+    if (possition_count == 0){
+        return;
+    }else if (possition_count % 100 >= 11 && possition_count % 100 <= 13) {
         cout << possition_count << "th";
     }else if((possition_count % 10) == 1){
         cout << possition_count << "st";
@@ -53,7 +55,6 @@ int main (){
 
     long long pages;
 
-    cout << "Please enter your total book pages: ";
     scanf("%lld", &pages);
     
     possitionCount(pages);
