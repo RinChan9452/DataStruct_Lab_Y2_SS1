@@ -1,10 +1,9 @@
 #include <iostream>
-#include <stdio.h>
 using namespace std;
 
-bool checkPrime(long long pages){
+bool checkPrime(long pages){
     
-    for (long long i = 2; i * i <= pages; i++){
+    for (long i = 2; i * i <= pages; i++){
         if(pages % i == 0){
             return false;
         }
@@ -15,7 +14,7 @@ bool checkPrime(long long pages){
 
 }
 
-void possitionCount(long long pages) {
+void possitionCount(long pages) {
     
     int possition_count = 0;
 
@@ -28,7 +27,7 @@ void possitionCount(long long pages) {
         return;
     } // check if it prime or not first before find the possition
 
-    for (long long i = 2; i <= pages; i++) {
+    for (long i = 2; i <= pages; i++) {
         if (checkPrime(i)){
             possition_count++;
         }
@@ -53,7 +52,7 @@ void possitionCount(long long pages) {
 
 int main (){
 
-    long long pages;
+    long pages;
 
     scanf("%lld", &pages);
     
