@@ -1,16 +1,12 @@
 #include <iostream>
 using namespace std;
 
-bool checkPrime(long long pages){
+bool checkPrime(long pages){
 
     if (pages == 2){
         return true;
     }
 
-    if (pages % 2 == 0){
-        return false;
-    } // skip even number
-    
     for (long i = 3; i * i <= pages; i += 2){
         if(pages % i == 0){
             return false;
@@ -22,9 +18,9 @@ bool checkPrime(long long pages){
 
 }
 
-void possitionCount(long long pages) {
+void possitionCount(long pages) {
     
-    int possition_count = 0;
+    int possition_count = 1;
 
     if (pages < 2) {
         cout << "ERROR!";
@@ -36,11 +32,11 @@ void possitionCount(long long pages) {
         return;
     } // check if it prime or not first before find the possition
 
-    for (long i = 2; i <= pages; i++) {
+    for (long i = 3; i <= pages; i += 2) {
         if (checkPrime(i)){
             possition_count++;
         }
-    } // check possition by loop number and check each number if it prime or not if yes possition count 
+    } // bypass 2 and check just odd number check possition by loop number and check each number if it prime or not if yes possition count 
       // + 1 till the prime number that I want to find the possition
 
     if (possition_count == 0){
@@ -61,9 +57,9 @@ void possitionCount(long long pages) {
 
 int main (){
 
-    long long pages;
+    long pages;
 
-    scanf("%lld", &pages);
+    scanf("%ld", &pages);
     
     possitionCount(pages);
 
