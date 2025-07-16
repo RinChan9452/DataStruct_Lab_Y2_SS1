@@ -2,8 +2,16 @@
 using namespace std;
 
 bool checkPrime(long pages){
+
+    if (pages == 2){
+        return true;
+    }
+
+    if (pages % 2 == 0){
+        return false;
+    } // skip even number
     
-    for (long i = 2; i * i <= pages; i++){
+    for (long i = 3; i * i <= pages; i + 2){
         if(pages % i == 0){
             return false;
         }
@@ -54,7 +62,7 @@ int main (){
 
     long pages;
 
-    scanf("%lld", &pages);
+    scanf("%ld", &pages);
     
     possitionCount(pages);
 
