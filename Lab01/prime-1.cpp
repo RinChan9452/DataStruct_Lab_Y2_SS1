@@ -6,9 +6,6 @@ bool checkPrime(long pages){
     if (pages == 2){
         return true;
     }
-    if (pages % 2 == 0){
-        return false;
-    }
 
     for (long i = 3; i * i <= pages; i += 2){
         if(pages % i == 0){
@@ -29,7 +26,6 @@ void possitionCount(long pages) {
         cout << "ERROR!";
         return;
     } // sorry I forgot to read question below that if it lower than 2 it will be error
-
 
     if (!checkPrime(pages)) {
         cout << "Unrelated";
