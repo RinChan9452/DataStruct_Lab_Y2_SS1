@@ -18,23 +18,33 @@ void possitionCount(int pages) {
     }
 
     vector<bool> storedPrime;
+    bool checkPages = false;
 
     for (int i = 3; i <= pages; i += 2){
+
+        bool checkPrime = true;
+        
         for (int j = 3; j * j <= i; j += 2) {
             if (i % j == 0) {
-                cout << "Unrelated";
-                return;
+                checkPrime = false;
+                break;
             }
         }
-        storedPrime.push_back(true);
-        if (i == pages) {
-            break;
+
+        if (checkPrime) {
+            storedPrime.push_back(true);
+            if (i == pages) {
+                checkPages = true; 
+            }
         }
     }
 
-    int possition_count = storedPrime.size() + 1;
+    if (!checkPages) {
+        cout << "Unrelated";
+        return;
+    }
 
-    cout << possition_count;
+    int possition_count = storedPrime.size() + 1;
 
     
 
