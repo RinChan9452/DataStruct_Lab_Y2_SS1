@@ -1,23 +1,54 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 void possitionCount(int pages) {
-    
-    int possition_count = 1;
 
     if (pages < 2) {
         cout << "ERROR!";
         return;
-    }else if (pages == 2){
-        cout << possition_count << "st";
+    }
+    if (pages == 2){
+        cout << "1st"; 
+        return;
+    }
+    if (pages % 2 == 0){
+        cout << "Unrelated";
         return;
     }
 
+    vector<bool> storedPrime;
+    bool checkPages = false;
+
+    for (int i = 3; i <= pages; i += 2){
+
+        bool checkPrime = true;
+        
+        for (int j = 3; j * j <= i; j += 2) {
+            if (i % j == 0) {
+                checkPrime = false;
+                break;
+            }
+        }
+
+        if (checkPrime) {
+            storedPrime.push_back(true);
+            if (i == pages) {
+                checkPages = true; 
+            }
+        }
+    }
+
+    if (!checkPages) {
+        cout << "Unrelated";
+        return;
+    }
+
+    int possition_count = storedPrime.size() + 1;
+
     
 
-    if (possition_count == 0){
-        return;
-    }else if (possition_count % 100 >= 11 && possition_count % 100 <= 13) {
+    if (possition_count % 100 >= 11 && possition_count % 100 <= 13) {
         cout << possition_count << "th";
     }else if((possition_count % 10) == 1){
         cout << possition_count << "st";
