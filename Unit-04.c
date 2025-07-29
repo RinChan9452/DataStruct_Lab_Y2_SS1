@@ -1,4 +1,5 @@
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct node {
     int num;
@@ -37,14 +38,34 @@ int appendHeadList(NumList *s, Node *p) {
         
 }
 
-void insertLast(NumList *s, Node *p) {
+
+void insertBetween(NumList *s, Node *newNode) {
     if (s->head == NULL) {
-        s->head = p;
-        s->last = p;
-    } else {
-        s->last->next = p;
-        s->last = p;
+        s->head = newNode;
+        s->last = newNode;
+        s->length++;
+        return;
     }
+
+    Node *curr = s->head;
+    Node *prev = NULL;
+
+    while (curr != NULL && curr->num < newNode->num) {
+        prev = curr;
+        curr = curr->next;
+    }
+
+    if (prev == NULL) {
+        newNode->next = s->head;
+        s->head = newNode;
+    } else {
+        prev->next = newNode;
+        newNode->next = curr;
+    }
+
+    if (newNode->next == NULL)
+        s->last = newNode;
+
     s->length++;
 }
 
